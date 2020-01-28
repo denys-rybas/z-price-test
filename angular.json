@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/devextreme/dist/css/dx.common.css",
+              "node_modules/devextreme/dist/css/dx.light.css",
+              "src/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -93,7 +95,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/styles.scss"
             ],
             "scripts": []
           }
@@ -124,6 +126,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "z-price-test"
 }
