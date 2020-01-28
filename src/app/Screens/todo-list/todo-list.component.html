@@ -9,7 +9,7 @@
                  [checked]="item.completed"
                  (change)="onChange(item.id)"
           >
-          <strong>{{ ++i }}</strong>
+          <strong>{{ i + 1 }}</strong>
           <span [class.todo-list_done]="item.completed">
             {{ item.title }}
           </span>

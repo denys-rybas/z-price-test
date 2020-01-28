@@ -28,7 +28,7 @@ export class TodoComponent implements OnInit {
 
   onToggle(id: number) {
     // tslint:disable-next-line:no-unused-expression
-    const index = this.todo.findIndex((item) => item.id === id)
+    const index = this.todo.findIndex(item => item.id === id)
     this.todo[index].completed = !this.todo[index].completed // true / false
   }
 }
