@@ -5,6 +5,7 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FirstScreenComponent } from './Screens/first-screen/first-screen.component';
+import { TodoListComponent } from './Screens/todo-list/todo-list.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { FirstScreenComponent } from './Screens/first-screen/first-screen.compon
     HeaderComponent,
     routingComponents,
     FirstScreenComponent,
+    TodoListComponent,
   ],
   imports: [
     BrowserModule,
