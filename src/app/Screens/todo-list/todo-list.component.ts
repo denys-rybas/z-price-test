@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Todo} from '../../Pages/todo/todo.component';
+import {Component, OnInit} from '@angular/core';
+import {TodoService} from '../../Shared/todo.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,16 +8,22 @@ import {Todo} from '../../Pages/todo/todo.component';
 })
 export class TodoListComponent implements OnInit {
 
-  @Input() todo: Todo[] = []; // props in Vue
-  @Output() onToggle = new EventEmitter<number>() // emit
-
-  constructor() {
+  constructor(private todoService: TodoService) {
   }
 
   ngOnInit() {
+    this.todoService.todo = [
+      {id: 1, title: 'Complete task #1', completed: false, date: new Date()},
+      {id: 2, title: 'Complete task #2', completed: true, date: new Date()},
+      {id: 3, title: 'Complete task #3', completed: false, date: new Date()}
+    ];
   }
 
   onChange(id: number) {
-    this.onToggle.emit(id)
+    this.todoService.onToggle(id);
+  }
+
+  removeTodo(id: number) {
+    this.todoService.removeTodo(id);
   }
 }

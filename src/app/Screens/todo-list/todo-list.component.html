@@ -1,24 +1,37 @@
 <div class="container mt-2">
   <div class="row justify-content-center">
     <div class="col-lg-8">
-      <ul class="todo-list">
-        <li *ngFor="let item of todo; let i = index"
+      <ul class="todo-list"
+          *ngIf="todoService.todo.length; else noTodo"
+      >
+        <li *ngFor="let item of todoService.todo; let i = index"
             class="todo-list__item d-flex justify-content-between align-items-center mb-2"
         >
           <input type="checkbox"
                  [checked]="item.completed"
                  (change)="onChange(item.id)"
           >
-          <strong>{{ i + 1 }}</strong>
+          <strong>
+            {{ i + 1 }}
+          </strong>
           <span [class.todo-list_done]="item.completed">
             {{ item.title }}
           </span>
           <small>
             {{ item.date | date:'medium' }}
           </small>
-          <button class="btn delete">&times;</button>
+          <button class="btn delete"
+                  (click)="removeTodo(item.id)"
+          >
+            &times;
+          </button>
         </li>
       </ul>
+      <ng-template #noTodo>
+        <p class="text-success text-center">
+          All tasks was done!
+        </p>
+      </ng-template>
     </div>
   </div>
 </div>
