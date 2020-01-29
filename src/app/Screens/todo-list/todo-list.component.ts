@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TodoService} from '../../Shared/todo.service';
+import {delay} from 'rxjs/operators';
 
 @Component({
   selector: 'app-todo-list',
@@ -11,12 +12,14 @@ export class TodoListComponent implements OnInit {
   constructor(private todoService: TodoService) {
   }
 
+  private loading = true
+
   ngOnInit() {
-    this.todoService.todo = [
-      {id: 1, title: 'Complete task #1', completed: false, date: new Date()},
-      {id: 2, title: 'Complete task #2', completed: true, date: new Date()},
-      {id: 3, title: 'Complete task #3', completed: false, date: new Date()}
-    ];
+    this.todoService.fetchTodo()
+      .pipe(delay(1000)) // added delay for request
+      .subscribe(() => {
+      this.loading = false
+    })
   }
 
   onChange(id: number) {

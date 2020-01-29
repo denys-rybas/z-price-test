@@ -10,6 +10,7 @@
   background: red;
   padding: .1rem .6rem;
   border-radius: 50%;
+  transition: .3s;
 
   &:hover {
     background: darken(red, 30%);

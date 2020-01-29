@@ -1,36 +1,51 @@
 <div class="container mt-2">
   <div class="row justify-content-center">
     <div class="col-lg-8">
-      <ul class="todo-list"
-          *ngIf="todoService.todo.length; else noTodo"
-      >
-        <li *ngFor="let item of todoService.todo; let i = index"
-            class="todo-list__item d-flex justify-content-between align-items-center mb-2"
+      <div *ngIf="!loading; else loadingTemplate">
+        <div class="todo-list"
+             *ngIf="todoService.todo.length; else noTodo"
         >
-          <input type="checkbox"
-                 [checked]="item.completed"
-                 (change)="onChange(item.id)"
+          <div *ngFor="let item of todoService.todo; let i = index"
+               class="todo-list__item row justify-content-between align-items-center mb-2"
           >
-          <strong>
-            {{ i + 1 }}
-          </strong>
-          <span [class.todo-list_done]="item.completed">
+            <div class="col-1">
+              <input type="checkbox"
+                     [checked]="item.completed"
+                     (change)="onChange(item.id)"
+              >
+            </div>
+            <div class="col-1">
+              <strong>
+                {{ i + 1 }}
+              </strong>
+            </div>
+            <div class="col-9">
+             <span [class.todo-list_done]="item.completed">
             {{ item.title }}
-          </span>
-          <small>
-            {{ item.date | date:'medium' }}
-          </small>
-          <button class="btn delete"
-                  (click)="removeTodo(item.id)"
-          >
-            &times;
-          </button>
-        </li>
-      </ul>
+              </span>
+            </div>
+            <div class="col-1">
+              <button class="btn delete"
+                      (click)="removeTodo(item.id)"
+              >
+                &times;
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <ng-template #noTodo>
         <p class="text-success text-center">
           All tasks was done!
         </p>
+      </ng-template>
+      <ng-template #loadingTemplate>
+        <div class="row justify-content-center">
+          <div class="col-4 d-flex justify-content-around">
+            <span class="">Loading...</span>
+            <div class="spinner-border text-warning" role="status" aria-hidden="true"></div>
+          </div>
+        </div>
       </ng-template>
     </div>
   </div>
