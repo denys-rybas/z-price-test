@@ -20,6 +20,8 @@ export class TodoService {
 
   public todo: Todo[] = [];
   private apiUrl = 'https://jsonplaceholder.typicode.com';
+  public searchString = ''
+  public noTodos = false
 
   onToggle(id: number) {
     const index = this.todo.findIndex(item => item.id === id);
@@ -39,4 +41,5 @@ export class TodoService {
   addTodo(todo: Todo) {
     this.todo.unshift(todo)
   }
+
 }

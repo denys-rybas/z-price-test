@@ -1,0 +1,16 @@
+<div class="todo-filter mb-2">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 search-container d-flex justify-content-center">
+        <input type="text"
+               placeholder="Search..."
+               class="todo-filter__search w-100 border rounded-pill p-2"
+               [(ngModel)]="todoService.searchString"
+        >
+        <fa-icon [icon]="search"
+                 class="search-icon">
+        </fa-icon>
+      </div>
+    </div>
+  </div>
+</div>

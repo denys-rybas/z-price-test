@@ -9,6 +9,9 @@ import { TodoListComponent } from './Screens/todo-list/todo-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AddTodoFormComponent } from './Screens/add-todo-form/add-todo-form.component';
 import {FormsModule} from '@angular/forms';
+import { TodoFilterComponent } from './Screens/todo-filter/todo-filter.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { TodoFilterPipe } from './Shared/todo-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,12 +21,15 @@ import {FormsModule} from '@angular/forms';
     FirstScreenComponent,
     TodoListComponent,
     AddTodoFormComponent,
+    TodoFilterComponent,
+    TodoFilterPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
