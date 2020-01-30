@@ -9,30 +9,29 @@
               [masterDetail]="{ enabled: true, template: 'detail' }"
               keyExpr="id.value"
               [showBorders]="true">
-  <dxi-column dataField="picture.medium" caption="Photo" [width]="100" [allowFiltering]="false"
+  <dxi-column dataField="picture.medium" caption="Photo" [width]="200" [allowFiltering]="false"
               [allowSorting]="false"
               cellTemplate="userImageTemplate">
   </dxi-column>
-  <dxi-column dataField="name.first" caption="Name"></dxi-column>
-  <dxi-column dataField="name.last" caption="Last name"></dxi-column>
-  <dxi-column dataField="gender" [width]="170"></dxi-column>
-  <dxi-column dataField="phone" [width]="125"></dxi-column>
-<!--  add user image-->
+  <dxi-column dataField="name.first" caption="Name" [width]="150"></dxi-column>
+  <dxi-column dataField="name.last" caption="Last name" [width]="150"></dxi-column>
+  <dxi-column dataField="gender"></dxi-column>
+  <dxi-column dataField="phone"></dxi-column>
+  <!--  add user image-->
   <div *dxTemplate="let data of 'userImageTemplate'">
     <img [src]="data.value" alt="image"/>
   </div>
-<!--  add Master detail-->
-    <div *dxTemplate="let employee of 'detail'">
-      <div class="master-detail-caption">{{employee.data.FirstName + " " + employee.data.LastName + "'s Tasks:"}}</div>
-      <dx-data-grid
-        [dataSource]="getTasks(employee.key)"
-        [showBorders]="true"
-        [columnAutoWidth]="true">
-        <dxi-column dataField="Subject"></dxi-column>
-        <dxi-column dataField="StartDate" dataType="date"></dxi-column>
-        <dxi-column dataField="DueDate" dataType="date"></dxi-column>
-        <dxi-column dataField="Priority"></dxi-column>
-        <dxi-column  dataType="boolean" caption="Completed" [calculateCellValue]="completedValue"></dxi-column>
-      </dx-data-grid>
-    </div>
+  <!--  add Master detail-->
+  <div *dxTemplate="let item of 'detail'">
+<!--          <div class="master-detail-caption">{{item.row.data.name.first + " " + item.row.data.data.name.last + "'s Details:"}}</div>-->
+    <dx-data-grid
+      [dataSource]="usersService.check(item.data)"
+      [showBorders]="true"
+      [columnAutoWidth]="true"
+    >
+      <dxi-column dataField="city"></dxi-column>
+      <dxi-column dataField="street"></dxi-column>
+      <dxi-column dataField="email"></dxi-column>
+    </dx-data-grid>
+  </div>
 </dx-data-grid>

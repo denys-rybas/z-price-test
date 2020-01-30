@@ -34,16 +34,21 @@ export class UsersService {
   }
 
   private apiUrl = 'https://randomuser.me';
-  private userSeed = '5aa7cbd34b03edf5'
+  private userSeed = '5aa7cbd34b03edf5';
   public users;
 
   fetchUsers(): Subscription {
     return this.http.get<Users>(this.apiUrl + '/api/?results=100&seed=' + this.userSeed)
       .subscribe(response => {
-        this.users = response.results
+        this.users = response.results;
 
-        console.log(this.users)
-      })
+        console.log(this.users);
+      });
+  }
+
+  check(smth) {
+    console.log(smth)
+    return smth
   }
 
 }
