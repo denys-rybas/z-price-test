@@ -2,15 +2,27 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, Subscription} from 'rxjs';
 import {tap} from 'rxjs/operators';
+import DevExpress from 'devextreme';
+import DataSource from 'devextreme/data/data_source';
 
 export interface Users {
-  image: string,
-  name: string,
-  gender: string,
-  phone: string,
-  city: string,
-  street: string,
-  email: string
+  results: {
+    picture: string,
+    name: {
+      first: string,
+      last: string
+    }
+    gender: string,
+    phone: string,
+  }
+}
+
+export interface MasterDetails {
+  results: {
+    city: string,
+    street: string,
+    email: string
+  }
 }
 
 @Injectable({
@@ -23,13 +35,15 @@ export class UsersService {
 
   private apiUrl = 'https://randomuser.me';
   private userSeed = '5aa7cbd34b03edf5'
-  public users: Users = {};
+  public users;
 
   fetchUsers(): Subscription {
     return this.http.get<Users>(this.apiUrl + '/api/?results=100&seed=' + this.userSeed)
       .subscribe(response => {
-        this.users = response
+        this.users = response.results
+
         console.log(this.users)
       })
   }
+
 }

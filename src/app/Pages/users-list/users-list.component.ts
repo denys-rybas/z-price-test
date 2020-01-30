@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {UsersService} from '../../Shared/users.service';
+import {Component, OnInit} from '@angular/core';
+import {Users, UsersService} from '../../Shared/users.service';
+import DevExpress from 'devextreme';
+import DataSource from 'devextreme/data/data_source';
 
 @Component({
   selector: 'app-users-list',
@@ -7,11 +9,15 @@ import {UsersService} from '../../Shared/users.service';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
+  constructor(private usersService: UsersService) {
+  }
 
-  constructor(private usersService: UsersService) { }
 
   ngOnInit() {
-    this.usersService.fetchUsers()
+    this.usersService.fetchUsers();
   }
 
 }
+
+
+
