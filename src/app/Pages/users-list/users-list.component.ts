@@ -36,8 +36,6 @@ export class UsersListComponent implements OnInit {
   // }
 
   getMasterDetails(email) {
-    console.log(email)
-    // return {}
     this.tempArrWithDetail = []
     const detail = this.usersService.users.find(i => i.email === email)
     // @ts-ignore
