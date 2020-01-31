@@ -25,7 +25,7 @@
   <div *dxTemplate="let item of 'detail'">
 <!--          <div class="master-detail-caption">{{item.row.data.name.first + " " + item.row.data.data.name.last + "'s Details:"}}</div>-->
     <dx-data-grid
-      [dataSource]="getMasterDetails(item.data.id.value)"
+      [dataSource]="getMasterDetails(item.row.data.email)"
       [showBorders]="true"
       [columnAutoWidth]="true"
     >

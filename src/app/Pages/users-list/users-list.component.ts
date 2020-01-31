@@ -35,24 +35,26 @@ export class UsersListComponent implements OnInit {
   //   })
   // }
 
-  getMasterDetails(id) {
+  getMasterDetails(email) {
+    console.log(email)
+    // return {}
     this.tempArrWithDetail = []
-    const detail = this.usersService.users.find(i => i.id.value === id)
+    const detail = this.usersService.users.find(i => i.email === email)
     // @ts-ignore
     this.tempArrWithDetail.push(detail)
-    let item = this.dataSourceStorage.find((i) => i.key === id);
+    let item = this.dataSourceStorage.find((i) => i.key === email);
     if (!item) {
       // @ts-ignore
       item = {
-        key: id,
+        key: email,
         dataInstance: new DataSource({
           store: {
             data: this.tempArrWithDetail,
-            key: 'id.value',
+            key: 'email',
             type: 'array'
           }
         }),
-        filter: ['id.value', '=', id]
+        filter: ['email', '=', email]
       };
       this.dataSourceStorage.push(item);
     }
