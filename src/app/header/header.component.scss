@@ -1,5 +1,6 @@
 .active {
-  background: rgba(255, 118, 160, 0.51);
+  color: #df9200 !important;
+  text-decoration: underline;
 }
 
 .menu-bar {
@@ -12,4 +13,9 @@
 .menu__link {
   padding: .5rem 1rem;
   color: #212121;
+}
+
+.menu__link:hover {
+  color: #df9200;
+  text-decoration: none;
 }
