@@ -12,7 +12,8 @@ import 'devextreme/data/odata/store';
 export class UsersListComponent implements OnInit {
   public dataSourceStorage;
   public masterDetails;
-  private temp = [];
+  // private temp = [];
+  private tempArrWithDetail: [];
 
   constructor(private usersService: UsersService) {
     this.dataSourceStorage = []
@@ -22,39 +23,41 @@ export class UsersListComponent implements OnInit {
     this.usersService.fetchUsers();
     this.masterDetails = this.usersService.users
   }
-  getUserDetails(entry) {
-    console.log(entry)
-    this.temp.length = 0
-    this.usersService.users.forEach(value => {
-      if (value === entry) {
-        this.temp.push(entry)
-        console.log(this.temp[0])
-        return this.temp[0]
-      }
-    })
-  }
-
-  // getMasterDetails(id) {
-  //   console.log(id);
-  //   let item = this.dataSourceStorage.find((i) => i.key === id);
-  //   if (!item) {
-  //     // @ts-ignore
-  //     item = {
-  //       key: id,
-  //       dataInstance: new DataSource({
-  //         store: {
-  //           data: this.usersService.users,
-  //           key: 'id.value',
-  //           type: 'array'
-  //         }
-  //       }),
-  //       filter: ['id.value', '=', id]
-  //     };
-  //     this.dataSourceStorage.push(item);
-  //   }
-  //   console.log(item);
-  //   return item.dataInstance
+  // getUserDetails(entry) {
+  //   console.log(entry)
+  //   this.temp.length = 0
+  //   this.usersService.users.forEach(value => {
+  //     if (value === entry) {
+  //       this.temp.push(entry)
+  //       console.log(this.temp[0])
+  //       return this.temp[0]
+  //     }
+  //   })
   // }
+
+  getMasterDetails(id) {
+    this.tempArrWithDetail = []
+    const detail = this.usersService.users.find(i => i.id.value === id)
+    // @ts-ignore
+    this.tempArrWithDetail.push(detail)
+    let item = this.dataSourceStorage.find((i) => i.key === id);
+    if (!item) {
+      // @ts-ignore
+      item = {
+        key: id,
+        dataInstance: new DataSource({
+          store: {
+            data: this.tempArrWithDetail,
+            key: 'id.value',
+            type: 'array'
+          }
+        }),
+        filter: ['id.value', '=', id]
+      };
+      this.dataSourceStorage.push(item);
+    }
+    return item.dataInstance
+  }
 
 }
 
