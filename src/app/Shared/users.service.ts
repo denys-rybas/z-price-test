@@ -46,9 +46,4 @@ export class UsersService {
       });
   }
 
-  check(smth) {
-    console.log(smth)
-    return smth
-  }
-
 }

@@ -25,12 +25,12 @@
   <div *dxTemplate="let item of 'detail'">
 <!--          <div class="master-detail-caption">{{item.row.data.name.first + " " + item.row.data.data.name.last + "'s Details:"}}</div>-->
     <dx-data-grid
-      [dataSource]="usersService.check(item.data)"
+      [dataSource]="getMasterDetails(item.data.id.value)"
       [showBorders]="true"
       [columnAutoWidth]="true"
     >
-      <dxi-column dataField="city"></dxi-column>
-      <dxi-column dataField="street"></dxi-column>
+      <dxi-column dataField="location.city" caption="City"></dxi-column>
+      <dxi-column dataField="location.street.name" caption="Street"></dxi-column>
       <dxi-column dataField="email"></dxi-column>
     </dx-data-grid>
   </div>
