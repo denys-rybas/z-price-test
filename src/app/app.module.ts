@@ -13,6 +13,7 @@ import {TodoFilterComponent} from './Screens/todo-filter/todo-filter.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {TodoFilterPipe} from './Shared/todo-filter.pipe';
 import {
+  DevExtremeModule,
   DxBulletModule,
   DxButtonModule,
   DxDataGridModule, DxTemplateModule,
@@ -35,6 +36,7 @@ import {
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
+    DevExtremeModule,
     DxDataGridModule,
     DxTemplateModule,
     DxBulletModule,
