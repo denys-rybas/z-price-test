@@ -26,12 +26,13 @@ export class UsersService {
   }
 
   private apiUrl = 'https://randomuser.me';
-  private userSeed = '5aa7cbd34b03edf5';
+  private selectParameters = '&inc=id,picture,name,gender,phone,location,email'
+  private userSeed = '&seed=5aa7cbd34b03edf5';
   public users;
   public allowedColumns;
 
   fetchUsers(): Subscription {
-    return this.http.get<Users>(this.apiUrl + '/api/?results=100&seed=' + this.userSeed)
+    return this.http.get<Users>(this.apiUrl + '/api/?results=100' + this.userSeed + this.selectParameters)
       .subscribe(response => {
         this.users = response.results;
 

@@ -27,10 +27,15 @@
     <div class="master-detail-caption mb-1">
       {{item.row.data.name.first + " " + item.row.data.name.last + "'s Details:"}}
     </div>
+    <div class="master-detail-caption mb-1 text-danger"
+         *ngIf="!usersService.allowedColumns['city'] && !usersService.allowedColumns['street'] && !usersService.allowedColumns['email']">
+      Nothing to show. Select city, street or email.
+    </div>
     <dx-data-grid
       [dataSource]="getMasterDetails(item.row.data.email)"
       [showBorders]="true"
       [columnAutoWidth]="true"
+      *ngIf="usersService.allowedColumns['city'] || usersService.allowedColumns['street'] || usersService.allowedColumns['email']"
     >
       <dxi-column dataField="location.city" caption="City"
                   *ngIf="usersService.allowedColumns['city']">
