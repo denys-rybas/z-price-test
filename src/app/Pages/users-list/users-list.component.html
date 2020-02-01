@@ -9,6 +9,7 @@
               [masterDetail]="{ enabled: true, template: 'detail' }"
               keyExpr="id.value"
               [showBorders]="true">
+  <dxo-paging pageSize="25"></dxo-paging>
   <dxi-column dataField="picture.medium" caption="Photo" [width]="200" [allowFiltering]="false"
               [allowSorting]="false"
               cellTemplate="userImageTemplate">
