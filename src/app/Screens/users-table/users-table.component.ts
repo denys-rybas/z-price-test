@@ -12,7 +12,6 @@ import 'devextreme/data/odata/store';
 export class UsersTableComponent implements OnInit {
   public dataSourceStorage;
   public masterDetails;
-  // private temp = [];
   private tempArrWithDetail: [];
 
   constructor(private usersService: UsersService) {
@@ -23,19 +22,8 @@ export class UsersTableComponent implements OnInit {
     this.usersService.fetchUsers();
     this.masterDetails = this.usersService.users
   }
-  // getUserDetails(entry) {
-  //   console.log(entry)
-  //   this.temp.length = 0
-  //   this.usersService.users.forEach(value => {
-  //     if (value === entry) {
-  //       this.temp.push(entry)
-  //       console.log(this.temp[0])
-  //       return this.temp[0]
-  //     }
-  //   })
-  // }
 
-  getMasterDetails(email) {
+  getMasterDetails(email: string) {
     this.tempArrWithDetail = []
     const detail = this.usersService.users.find(i => i.email === email)
     // @ts-ignore

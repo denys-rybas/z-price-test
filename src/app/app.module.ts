@@ -20,6 +20,7 @@ import {
 } from 'devextreme-angular';
 import { UsersTableComponent } from './Screens/users-table/users-table.component';
 import { UserFiltersComponent } from './Screens/user-filters/user-filters.component';
+import {dom} from '@fortawesome/fontawesome-svg-core';
 
 @NgModule({
   declarations: [
