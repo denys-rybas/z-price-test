@@ -26,16 +26,28 @@ export class UsersService {
   }
 
   private apiUrl = 'https://randomuser.me';
-  private selectParameters = '&inc=id,picture,name,gender,phone,location,email'
+  public selectParameters = {
+    id: 'id',
+    picture: 'picture',
+    name: 'name',
+    gender: 'gender',
+    city: 'location',
+    street: 'location',
+    email: 'email',
+    phone: 'phone'
+  };
+  public selectString = [];
   private userSeed = '&seed=5aa7cbd34b03edf5';
-  public users;
   public allowedColumns;
+  public users;
 
   fetchUsers(): Subscription {
-    return this.http.get<Users>(this.apiUrl + '/api/?results=100' + this.userSeed + this.selectParameters)
+    this.selectString = Object.values(this.selectParameters); // get array from obj
+    const uniqueSelectQueryString = [...new Set(this.selectString)]; // sting with unique values
+    console.log(uniqueSelectQueryString)
+    return this.http.get<Users>(this.apiUrl + '/api/?results=100' + this.userSeed + '&inc=' + uniqueSelectQueryString)
       .subscribe(response => {
         this.users = response.results;
-
         console.log(this.users);
       });
   }

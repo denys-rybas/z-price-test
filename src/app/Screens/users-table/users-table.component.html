@@ -32,7 +32,7 @@
       Nothing to show. Select city, street or email.
     </div>
     <dx-data-grid
-      [dataSource]="getMasterDetails(item.row.data.email)"
+      [dataSource]="getMasterDetails(item.row.data.picture.large)"
       [showBorders]="true"
       [columnAutoWidth]="true"
       *ngIf="usersService.allowedColumns['city'] || usersService.allowedColumns['street'] || usersService.allowedColumns['email']"

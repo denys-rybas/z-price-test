@@ -37,17 +37,31 @@ export class UserFiltersComponent implements OnInit {
     for (const key in this.filterData) {
       if (this.filterData[key] === true) {
         localStorage.setItem(key, JSON.stringify(true));
+        this.addQueryParameters(key);
       } else {
         localStorage.setItem(key, JSON.stringify(false));
+        this.deleteQueryParameters(key);
       }
     }
+    this.usersService.fetchUsers()
   }
 
   setValuesFromLocalStorage(localStorageData: object) {
     for (const key in localStorageData) {
       this.filterData[key] = !!JSON.parse(localStorageData[key]); // set true or false into filterData object
     }
-    this.usersService.allowedColumns = this.filterData
+    this.usersService.allowedColumns = this.filterData;
+  }
+
+  deleteQueryParameters(key: string) {
+    delete this.usersService.selectParameters[key];
+  }
+  addQueryParameters(key: string) {
+    if (key === 'city' || key === 'street') {
+      this.usersService.selectParameters[key] = 'location';
+    } else {
+      this.usersService.selectParameters[key] = key;
+    }
   }
 
 }

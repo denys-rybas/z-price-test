@@ -23,24 +23,24 @@ export class UsersTableComponent implements OnInit {
     this.masterDetails = this.usersService.users
   }
 
-  getMasterDetails(email: string) {
+  getMasterDetails(picture: string) {
     this.tempArrWithDetail = []
-    const detail = this.usersService.users.find(i => i.email === email)
+    const detail = this.usersService.users.find(i => i.picture.large === picture)
     // @ts-ignore
     this.tempArrWithDetail.push(detail)
-    let item = this.dataSourceStorage.find((i) => i.key === email);
+    let item = this.dataSourceStorage.find((i) => i.key === picture);
     if (!item) {
       // @ts-ignore
       item = {
-        key: email,
+        key: picture,
         dataInstance: new DataSource({
           store: {
             data: this.tempArrWithDetail,
-            key: 'email',
+            key: 'picture.large',
             type: 'array'
           }
         }),
-        filter: ['email', '=', email]
+        filter: ['picture.large', '=', picture]
       };
       this.dataSourceStorage.push(item);
     }
