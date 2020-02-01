@@ -29,7 +29,7 @@ export class UserFiltersComponent implements OnInit {
 
   ngOnInit() {
     const items = {...localStorage}; // got all localStore data
-    this.setValuesFromLocalStorage(items)
+    this.setValuesFromLocalStorage(items);
   }
 
   checkboxClick() {
@@ -44,11 +44,7 @@ export class UserFiltersComponent implements OnInit {
 
   setValuesFromLocalStorage(localStorageData: object) {
     for (const key in localStorageData) {
-      if (JSON.parse(localStorageData[key])) { // if key === true
-        this.filterData[key] = true
-      } else {
-        this.filterData[key] = false
-      }
+      this.filterData[key] = !!JSON.parse(localStorageData[key]); // set true or false into filterData object
     }
   }
 
