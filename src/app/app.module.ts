@@ -18,6 +18,8 @@ import {
   DxButtonModule,
   DxDataGridModule, DxTemplateModule,
 } from 'devextreme-angular';
+import { UsersTableComponent } from './Screens/users-table/users-table.component';
+import { UserFiltersComponent } from './Screens/user-filters/user-filters.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import {
     AddTodoFormComponent,
     TodoFilterComponent,
     TodoFilterPipe,
+    UsersTableComponent,
+    UserFiltersComponent,
   ],
   imports: [
     BrowserModule,
