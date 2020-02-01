@@ -1,6 +1,13 @@
 <div class="user-filters mb-2">
   <div class="container">
     <div class="row">
+      <div class="col-2">
+        <input id="phone" type="checkbox"
+               (change)="checkboxClick()"
+               [(ngModel)]="filterData.phone"
+        >
+        <label class="m-0 px-1" for="phone">Phone</label>
+      </div>
       <div class="col-3 d-flex align-items-center">
         <input id="gender" type="checkbox"
                (change)="checkboxClick()"
@@ -28,13 +35,6 @@
                [(ngModel)]="filterData.email"
         >
         <label class="m-0 px-1" for="email">Email</label>
-      </div>
-      <div class="col-2">
-        <input id="phone" type="checkbox"
-               (change)="checkboxClick()"
-               [(ngModel)]="filterData.phone"
-        >
-        <label class="m-0 px-1" for="phone">Phone</label>
       </div>
     </div>
   </div>

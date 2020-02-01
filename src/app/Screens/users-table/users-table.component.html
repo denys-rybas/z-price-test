@@ -12,8 +12,12 @@
   </dxi-column>
   <dxi-column dataField="name.first" caption="Name" cssClass="text-center align-middle"></dxi-column>
   <dxi-column dataField="name.last" caption="Last name" cssClass="text-center align-middle"></dxi-column>
-  <dxi-column dataField="gender" cssClass="text-center align-middle"></dxi-column>
-  <dxi-column dataField="phone" cssClass="text-center align-middle"></dxi-column>
+  <dxi-column dataField="gender" cssClass="text-center align-middle"
+              *ngIf="usersService.allowedColumns['gender']">
+  </dxi-column>
+  <dxi-column dataField="phone" cssClass="text-center align-middle"
+              *ngIf="usersService.allowedColumns['phone']"
+  ></dxi-column>
   <!--  add user image-->
   <div *dxTemplate="let data of 'userImageTemplate'">
     <img [src]="data.value" alt="image"/>
@@ -28,9 +32,15 @@
       [showBorders]="true"
       [columnAutoWidth]="true"
     >
-      <dxi-column dataField="location.city" caption="City"></dxi-column>
-      <dxi-column dataField="location.street.name" caption="Street"></dxi-column>
-      <dxi-column dataField="email"></dxi-column>
+      <dxi-column dataField="location.city" caption="City"
+                  *ngIf="usersService.allowedColumns['city']">
+      </dxi-column>
+      <dxi-column dataField="location.street.name" caption="Street"
+                  *ngIf="usersService.allowedColumns['street']">
+      </dxi-column>
+      <dxi-column dataField="email"
+                  *ngIf="usersService.allowedColumns['email']">
+      </dxi-column>
     </dx-data-grid>
   </div>
 </dx-data-grid>

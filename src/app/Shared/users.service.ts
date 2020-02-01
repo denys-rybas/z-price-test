@@ -17,14 +17,6 @@ export interface Users {
   }
 }
 
-export interface MasterDetails {
-  results: {
-    city: string,
-    street: string,
-    email: string
-  }
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -36,6 +28,7 @@ export class UsersService {
   private apiUrl = 'https://randomuser.me';
   private userSeed = '5aa7cbd34b03edf5';
   public users;
+  public allowedColumns;
 
   fetchUsers(): Subscription {
     return this.http.get<Users>(this.apiUrl + '/api/?results=100&seed=' + this.userSeed)

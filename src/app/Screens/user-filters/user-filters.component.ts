@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {UsersService} from '../../Shared/users.service';
 
 export interface FilterData {
   gender: boolean;
@@ -17,13 +18,13 @@ export class UserFiltersComponent implements OnInit {
 
   public filterData: FilterData;
 
-  constructor() {
+  constructor(private usersService: UsersService) {
     this.filterData = {
-      gender: false,
+      gender: true,
       city: false,
       street: false,
       email: false,
-      phone: false
+      phone: true
     };
   }
 
@@ -46,6 +47,7 @@ export class UserFiltersComponent implements OnInit {
     for (const key in localStorageData) {
       this.filterData[key] = !!JSON.parse(localStorageData[key]); // set true or false into filterData object
     }
+    this.usersService.allowedColumns = this.filterData
   }
 
 }
