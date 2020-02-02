@@ -3,9 +3,11 @@
   border: 1px solid slategrey;
   border-radius: 5px;
 }
+
 .todo-list_done {
   text-decoration: line-through;
 }
+
 .delete {
   background: red;
   padding: .1rem .6rem;
@@ -14,5 +16,14 @@
 
   &:hover {
     background: darken(red, 30%);
+  }
+}
+
+@media (max-width: 540px) {
+  .todo-list__title {
+    font-size: .8rem;
+  }
+  .delete {
+    padding: 0px 7px;
   }
 }

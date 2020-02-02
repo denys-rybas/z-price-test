@@ -3,3 +3,17 @@
   border: 1px solid dimgrey;
   border-radius: 5px;
 }
+
+@media (max-width: 768px) {
+  .user-filters {
+    padding: .3rem;
+  }
+  .user-filters__label {
+    font-size: .8rem;
+  }
+}
+@media (max-width: 576px) {
+  .user-filters__label {
+    font-size: .7rem;
+  }
+}

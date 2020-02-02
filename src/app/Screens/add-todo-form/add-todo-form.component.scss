@@ -4,3 +4,14 @@
 .add-todo__input {
 padding: .3rem;
 }
+
+@media (max-width: 767px) {
+  .btn-text {
+    font-size: .8rem;
+  }
+}
+@media (max-width: 540px) {
+  .btn {
+    padding: .1rem .3rem;
+  }
+}

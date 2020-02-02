@@ -16,3 +16,21 @@
   font-size: 5rem;
   letter-spacing: 3px;
 }
+
+@media (max-width: 1200px) {
+  .first-screen__title {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 960px) {
+
+}
+@media (max-width: 720px) {
+  .first-screen {
+    background-size: unset;
+    background-position: 20% 100%;
+  }
+  .first-screen__title {
+    font-size: 3rem;
+  }
+}

@@ -1,40 +1,40 @@
 <div class="user-filters mb-2">
   <div class="container">
     <div class="row">
-      <div class="col-2">
+      <div class="col-2  p-1 p-md-2 d-flex align-items-center justify-content-center">
         <input id="phone" type="checkbox"
                (change)="checkboxClick()"
                [(ngModel)]="filterData.phone"
         >
-        <label class="m-0 px-1" for="phone">Phone</label>
+        <label class="m-0 px-1 user-filters__label" for="phone">Phone</label>
       </div>
-      <div class="col-3 d-flex align-items-center">
+      <div class="col-3  p-1 p-md-2 d-flex align-items-center justify-content-center">
         <input id="gender" type="checkbox"
                (change)="checkboxClick()"
                [(ngModel)]="filterData.gender"
         >
-        <label class="m-0 px-1" for="gender">Gender</label>
+        <label class="m-0 px-1 user-filters__label" for="gender">Gender</label>
       </div>
-      <div class="col-2">
+      <div class="col-2 p-1 p-md-2 d-flex align-items-center justify-content-center">
         <input id="city" type="checkbox"
                (change)="checkboxClick()"
                [(ngModel)]="filterData.city"
         >
-        <label class="m-0 px-1" for="city">City</label>
+        <label class="m-0 px-1 user-filters__label" for="city">City</label>
       </div>
-      <div class="col-3">
+      <div class="col-3 p-1 p-md-2 d-flex align-items-center justify-content-center">
         <input id="street" type="checkbox"
                (change)="checkboxClick()"
                [(ngModel)]="filterData.street"
         >
-        <label class="m-0 px-1" for="street">Street</label>
+        <label class="m-0 px-1 user-filters__label" for="street">Street</label>
       </div>
-      <div class="col-2">
+      <div class="col-2 p-1 p-md-2 d-flex align-items-center justify-content-center">
         <input id="email" type="checkbox"
                (change)="checkboxClick()"
                [(ngModel)]="filterData.email"
         >
-        <label class="m-0 px-1" for="email">Email</label>
+        <label class="m-0 px-1 user-filters__label" for="email">Email</label>
       </div>
     </div>
   </div>
